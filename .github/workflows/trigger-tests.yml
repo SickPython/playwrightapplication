@@ -13,5 +13,5 @@ jobs:
         run: |
           curl -X POST -H "Authorization: token ${{ secrets.TEST_REPO_PAT }}" \
           -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/SickPython/playwright-course/actions/workflows/playwright.yml/dispatches \
+          https://api.github.com/repos/SickPython/playwright-course/.github/workflows/playwright.yml/dispatches \
           -d '{"ref":"main"}'
