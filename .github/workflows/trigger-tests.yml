@@ -11,26 +11,25 @@ jobs:
 
     steps:
       - name: Checkout Application Repo
-        uses: actions/checkout@v4  # Fetches playwrightapplication repo
+        uses: actions/checkout@v4  # Fetches the playwrightapplication repo
 
       - name: Clone Playwright Test Repository
         run: git clone https://github.com/SickPython/playwright-course.git tests
 
-      - name: Verify Directory Structure
-        run: ls -la  # Debugging step to check what files exist
+      - name: Verify Directory Structure (Debugging)
+        run: ls -la  # Check the folder structure in logs
+
+      - name: Initialize Node.js Project (If package.json is missing)
+        run: |
+          if [ ! -f package.json ]; then
+            npm init -y
+          fi
 
       - name: Install Dependencies
-        run: |
-          cd path-to-your-app-folder  # Replace with the correct directory name
-          npm install
+        run: npm install @playwright/test  # Install Playwright directly
 
-      - name: Start Application
-        run: |
-          cd path-to-your-app-folder  # Replace with the correct directory name
-          npm start &  # Run app in background
-
-      - name: Install Playwright
-        run: npm install -g @playwright/test  # Install globally if needed
+      - name: Install Playwright Browsers
+        run: npx playwright install
 
       - name: Run Playwright Tests
         run: npx playwright test tests/  # Runs Playwright tests from cloned repo
