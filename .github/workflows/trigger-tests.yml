@@ -1,4 +1,4 @@
-name: Run Playwright Tests from External Repo
+name: Run Playwright Tests on Windows
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Use Windows runner
 
     steps:
       - name: Checkout Application Repo
@@ -16,14 +16,12 @@ jobs:
       - name: Clone Playwright Test Repository
         run: git clone https://github.com/SickPython/playwright-course.git tests
 
-      - name: Install Dependencies (Uses Existing package.json)
-        run: npm install  # This works now since package.json exists
+      - name: Set Execution Policy (Fix Permission Issues)
+        run: Set-ExecutionPolicy Bypass -Scope Process -Force
+        shell: pwsh  # Run in PowerShell
 
-      - name: Run Playwright Tests
-        run: npx playwright test tests/
+      - name: Install Dependencies
+        run: npm install  # Install Playwright and dependencies
 
-      - name: Upload Playwright Test Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: playwright-report/
+      - name: Install Playwright Browsers
+        run: npx playwright install  #
