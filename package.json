@@ -1,0 +1,24 @@
+{
+  "name": "playwrightapplication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SickPython/playwrightapplication.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SickPython/playwrightapplication/issues"
+  },
+  "homepage": "https://github.com/SickPython/playwrightapplication#readme",
+  "dependencies": {
+    "@playwright/test": "^1.50.1"
+  }
+}
